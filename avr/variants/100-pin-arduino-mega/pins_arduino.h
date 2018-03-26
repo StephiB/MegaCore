@@ -27,7 +27,8 @@
 
 #define MEGACORE_100_PIN_MEGA_PINOUT
 
-#define NUM_DIGITAL_PINS            70
+//#define NUM_DIGITAL_PINS            70
+#define NUM_DIGITAL_PINS            86
 #define NUM_ANALOG_INPUTS           16
 #define EXTERNAL_NUM_INTERRUPTS     8
 #define analogInputToDigitalPin(p)  ((p < 16) ? (p) + 54 : -1)
@@ -111,7 +112,8 @@ static const uint8_t A15 = PIN_A15;
                                 ( (((p) >= 62) && ((p) <= 69)) ? ((p) - 62) : \
                                 0 ) ) ) ) ) )
 
-#define digitalPinToInterrupt(p) ((p) == 2 ? 0 : ((p) == 3 ? 1 : ((p) >= 18 && (p) <= 21 ? 23 - (p) : NOT_AN_INTERRUPT)))
+//#define digitalPinToInterrupt(p) ((p) == 2 ? 0 : ((p) == 3 ? 1 : ((p) >= 18 && (p) <= 21 ? 23 - (p) : NOT_AN_INTERRUPT)))
+#define digitalPinToInterrupt(p) ((p) == 2 ? 0 : ((p) == 3 ? 1 : ((p) >= 18 && (p) <= 21 ? 23 - (p) : (p) == 83 ? 6 : ((p) == 84 ? 7 : NOT_AN_INTERRUPT)))
 
 #ifdef ARDUINO_MAIN
 
@@ -235,7 +237,23 @@ const uint8_t PROGMEM digital_pin_to_port_PGM[] = {
 	PK	, // PK 4 ** 66 ** A12	
 	PK	, // PK 5 ** 67 ** A13	
 	PK	, // PK 6 ** 68 ** A14	
-	PK	, // PK 7 ** 69 ** A15	
+	PK	, // PK 7 ** 69 ** A15
+	PH  , // PH 2 ** 70 **
+	PH  , // PH 7 ** 71 **
+	PJ  , // PJ 2 ** 72 **
+	PJ  , // PJ 3 ** 73 **
+	PJ  , // PJ 4 ** 74 **
+	PJ  , // PJ 5 ** 75 **
+	PJ  , // PJ 6 ** 76 **
+	PJ  , // PJ 7 ** 77 **
+	PD  , // PD 4 ** 78 **
+	PD  , // PD 5 ** 79 **
+	PD  , // PD 6 ** 80 **
+	PG  , // PG 4 ** 81 **
+	PG  , // PG 3 ** 82 **
+	PE  , // PE 7 ** 83 **
+	PE  , // PE 6 ** 84 **
+	PE  , // PE 2 ** 85 **	
 };
 
 const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] = {
@@ -310,7 +328,23 @@ const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] = {
 	_BV( 4 )	, // PK 4 ** 66 ** A12	
 	_BV( 5 )	, // PK 5 ** 67 ** A13	
 	_BV( 6 )	, // PK 6 ** 68 ** A14	
-	_BV( 7 )	, // PK 7 ** 69 ** A15	
+	_BV( 7 )	, // PK 7 ** 69 ** A15
+	_BV( 2 )    , // PH 2 ** 70 **
+	_BV( 7 )    , // PH 7 ** 71 **
+	_BV( 2 )    , // PJ 2 ** 72 **
+	_BV( 3 )    , // PJ 3 ** 73 **
+	_BV( 4 )    , // PJ 4 ** 74 **
+	_BV( 5 )    , // PJ 5 ** 75 **
+	_BV( 6 )    , // PJ 6 ** 76 **
+	_BV( 7 )    , // PJ 7 ** 77 **
+	_BV( 4 )    , // PD 4 ** 78 **
+	_BV( 5 )    , // PD 5 ** 79 **
+	_BV( 6 )    , // PD 6 ** 80 **
+	_BV( 4 )    , // PG 4 ** 81 **
+	_BV( 3 )    , // PG 3 ** 82 **
+	_BV( 7 )    , // PE 7 ** 83 **
+	_BV( 6 )    , // PE 6 ** 84 **
+	_BV( 2 )    , // PE 2 ** 85 **
 };
 
 const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
@@ -385,7 +419,23 @@ const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
 	NOT_ON_TIMER	, // PK 4 ** 66 ** A12	
 	NOT_ON_TIMER	, // PK 5 ** 67 ** A13	
 	NOT_ON_TIMER	, // PK 6 ** 68 ** A14	
-	NOT_ON_TIMER	, // PK 7 ** 69 ** A15	
+	NOT_ON_TIMER	, // PK 7 ** 69 ** A15
+	NOT_ON_TIMER    , // PH 2 ** 70 **
+	NOT_ON_TIMER    , // PH 7 ** 71 **
+	NOT_ON_TIMER    , // PJ 2 ** 72 **
+	NOT_ON_TIMER    , // PJ 3 ** 73 **
+	NOT_ON_TIMER    , // PJ 4 ** 74 **
+	NOT_ON_TIMER    , // PJ 5 ** 75 **
+	NOT_ON_TIMER    , // PJ 6 ** 76 **
+	NOT_ON_TIMER    , // PJ 7 ** 77 **
+	NOT_ON_TIMER    , // PD 4 ** 78 **
+	NOT_ON_TIMER    , // PD 5 ** 79 **
+	NOT_ON_TIMER    , // PD 6 ** 80 **
+	NOT_ON_TIMER    , // PG 4 ** 81 **
+	NOT_ON_TIMER    , // PG 3 ** 82 **
+	NOT_ON_TIMER    , // PE 7 ** 83 **
+	NOT_ON_TIMER    , // PE 6 ** 84 **
+	NOT_ON_TIMER    , // PE 2 ** 85 **	
 };
 
 #endif
